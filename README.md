@@ -21,13 +21,13 @@ On **Validation.php**
 ### modify function getError()
 ```PHP
     public function getError(string $field = null): string
-	{
+    {
         $errorMessages = [ "" , "" ];
 
-		if ($field === null && count($this->rules) === 1)
-		{
-			reset($this->rules);
-			$field = key($this->rules);
+        if ($field === null && count($this->rules) === 1)
+        {
+            reset($this->rules);
+            $field = key($this->rules);
         }
         
         if(count($this->errorDelimiters) != 0)
@@ -36,8 +36,8 @@ On **Validation.php**
             $errorMessages[1] = $this->errorDelimiters[1];
         }
 
-		return array_key_exists($field, $this->getErrors()) && !empty($_REQUEST) ? $errorMessages[0] . $this->errors[$field] . $errorMessages[1] : '';
-	}
+        return array_key_exists($field, $this->getErrors()) && !empty($_REQUEST) ? $errorMessages[0] . $this->errors[$field] . $errorMessages[1] : '';
+    }
 ```
 
 On **OpenSSLHandler.php**
@@ -45,13 +45,13 @@ On **OpenSSLHandler.php**
 ### modify function decrypt()
 ```PHP
     public function decrypt(string $field = null)
-	{
+    {
         // ...
         if (! hash_equals($hmacKey, $hmacCalc))
-		{
+        {
             //throw EncryptionException::forAuthenticationFailed();
             return FALSE;
-		}
+        }
         // ...
-	}
+    }
 ```
